@@ -1,0 +1,10 @@
+package events;
+
+import java.util.List;
+
+public class OrderCreatedEvent {
+	
+	private Long orderId;
+	private List<Long> productIds;
+
+}

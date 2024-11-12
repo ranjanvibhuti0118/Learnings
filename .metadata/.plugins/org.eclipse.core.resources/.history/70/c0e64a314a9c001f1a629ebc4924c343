@@ -1,0 +1,17 @@
+package com.app.springbatch.configuration;
+
+import org.springframework.batch.item.file.mapping.FieldSetMapper;
+import org.springframework.batch.item.file.transform.FieldSet;
+import org.springframework.validation.BindException;
+
+import com.app.springbatch.entity.Inventory;
+
+public class InventoryFieldSetMapper implements FieldSetMapper<Inventory> {
+
+	@Override
+	public Inventory mapFieldSet(FieldSet fieldSet) throws BindException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

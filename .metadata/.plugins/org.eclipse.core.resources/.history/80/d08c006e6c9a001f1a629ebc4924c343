@@ -1,0 +1,7 @@
+spring.application.name=JPAMappings
+server.port=8081
+spring.datasource.url=jdbc:mysql://localhost/BloggingApplication
+spring.datasource.username=root
+spring.datasource.password=user
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true

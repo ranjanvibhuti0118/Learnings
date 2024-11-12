@@ -1,0 +1,25 @@
+package com.app.springbatch.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.springbatch.entity.Inventory;
+import com.app.springbatch.repository.InventoryRepo;
+
+public class InventoryServiceImpl implements InventoryService{
+
+	@Autowired
+	private InventoryRepo invRepo;
+	
+	
+	@Override
+	public Inventory findInventory(String productId, String qty) {
+
+		Long lProductId= Long.parseLong(productId);
+		Integer iQty= Integer.parseInt(qty);
+		Inventory existingInventory =invRepo.findByProductProductId(lProductId);
+		
+		
+		return null;
+	}
+
+}

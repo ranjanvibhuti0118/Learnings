@@ -1,0 +1,49 @@
+package com.app.springbatch.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Inventory {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long inventroyId;
+		
+	@ManyToOne
+	private Product product;
+	
+	private Integer qty;
+
+	
+	
+	public Inventory() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public Long getInventroyId() {
+		return inventroyId;
+	}
+
+	public void setInventroyId(Long inventroyId) {
+		this.inventroyId = inventroyId;
+	}
+
+
+	public Integer getQty() {
+		return qty;
+	}
+
+	public void setQty(Integer qty) {
+		this.qty = qty;
+	}
+
+	
+	
+}

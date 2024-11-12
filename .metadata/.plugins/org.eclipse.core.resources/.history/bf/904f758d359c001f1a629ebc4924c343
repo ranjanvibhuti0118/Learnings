@@ -1,0 +1,8 @@
+package com.app.springbatch.entity;
+
+public class Snippet {
+	public static void main(String[] args) {
+		productName
+	}
+}
+

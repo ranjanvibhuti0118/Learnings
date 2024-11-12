@@ -1,0 +1,16 @@
+package kafkaConiguration;
+
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
+import events.OrderCreatedEvent;
+
+
+@Service
+public class KafkaListner {
+
+	@KafkaListener(topics = "orders" )
+	public void listen(OrderCreatedEvent events) {
+	    System.out.println("Received message: " + events);
+	}
+}

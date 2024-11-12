@@ -1,0 +1,13 @@
+package com.app.springbatch.service;
+
+import com.app.springbatch.entity.Inventory;
+
+public class InventoryServiceImpl implements InventoryService{
+
+	@Override
+	public Inventory findInventory(String productId, String qty) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,37 @@
+package com.app.order.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.order.dao.OrderDAO;
+import com.app.order.entity.SalesOrder;
+import com.app.order.exception.OrderNumberNotUniqueException;
+
+@Service
+public class OrderServiceImpl implements OrderService{
+
+	@Autowired
+	OrderDAO orderDao;
+
+
+	@Override
+	public SalesOrder createOrder(SalesOrder order) {
+
+		SalesOrder savedOrder=null;
+		Long lOrderId= order.getOrderId();
+		Optional<SalesOrder> existingOrder=orderDao.findById(lOrderId);	
+
+		if(!existingOrder.isPresent()) {
+			
+			 savedOrder=orderDao.save(order);
+						
+		}else {
+			throw new OrderNumberNotUniqueException("Order with OrderId "+ lOrderId + " already exists");
+		}
+
+		return savedOrder;
+	}
+
+}

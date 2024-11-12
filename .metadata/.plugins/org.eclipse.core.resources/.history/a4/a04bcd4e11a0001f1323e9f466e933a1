@@ -1,0 +1,25 @@
+package com.app.order.events;
+
+import java.util.List;
+import java.util.Map;
+
+public class OrderCreatedEvent{
+	
+	private Long orderId;
+	private Map<Long,Integer> productQtyMap;
+	
+	public Long getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+	
+	public OrderCreatedEvent() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	
+}

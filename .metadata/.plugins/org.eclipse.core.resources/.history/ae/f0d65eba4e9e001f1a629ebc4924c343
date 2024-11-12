@@ -1,0 +1,18 @@
+package com.app.order.kafkaservice;
+
+
+@Service
+public class KafkaProducerService {
+
+	@Autowired	
+    private KafkaTemplate<String, String> kafkaTemplate;
+
+    private static final String TOPIC = "orders";
+
+    public void sendMessage(String message) {
+        kafkaTemplate.send(TOPIC, message);
+        System.out.println("Message sent to Kafka: " + message);
+    }	
+	
+}
+

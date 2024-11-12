@@ -1,0 +1,5 @@
+package com.app.order.kafkaservice;
+
+public class KafkaProducerService {
+
+}

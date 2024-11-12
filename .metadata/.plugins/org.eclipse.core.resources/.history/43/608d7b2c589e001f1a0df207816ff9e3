@@ -1,0 +1,8 @@
+package events;
+
+public class OrderCreatedEvent {
+	
+	private Long orderId;
+	private List<Long> productIds;
+
+}

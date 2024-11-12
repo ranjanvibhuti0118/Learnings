@@ -1,0 +1,5 @@
+package com.app.springbatch.repository;
+
+public interface ProductRepo {
+
+}

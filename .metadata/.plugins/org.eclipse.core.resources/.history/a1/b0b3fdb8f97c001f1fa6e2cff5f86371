@@ -1,0 +1,96 @@
+package com.app.blogger.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Post {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long postId;
+	
+	@Column(nullable = false)
+	private String description;
+	
+	private String content;	
+	
+	@ManyToOne
+	private User user;
+	
+	@ManyToMany(mappedBy = "allPostByCategory",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private List<Category> category = new ArrayList<>();
+	
+
+	public Post() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Post(String description, String content, User user, List<Category> category) {
+		super();
+		this.description = description;
+		this.content = content;
+		this.user = user;
+		this.category = category;
+	}
+
+	public Long getPostId() {
+		return postId;
+	}
+
+	public void setPostId(Long postId) {
+		this.postId = postId;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Category> getCategory() {
+		return category;
+	}
+
+	public void setCategory(List<Category> category) {
+		this.category = category;
+	}
+
+	@Override
+	public String toString() {
+		return "Post [description=" + description + ", content=" + content + ", user=" + user + ", category=" + category
+				+ "]";
+	}
+	
+
+	
+}

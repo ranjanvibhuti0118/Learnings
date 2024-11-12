@@ -1,0 +1,5 @@
+package com.app.springbatch.service;
+
+public class InventoryServiceImpl {
+
+}

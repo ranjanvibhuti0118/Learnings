@@ -1,0 +1,5 @@
+package com.app.springbatch.DTO;
+
+public class OrderDto {
+
+}

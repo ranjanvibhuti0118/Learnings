@@ -1,0 +1,16 @@
+package mainPackage.visualizeMappings.copy;
+
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+
+@Entity
+public class Customer {
+
+	private Long custId;
+	
+	@OneToMany(mappedBy ="customer" )
+	private List<Order> order;
+	
+}

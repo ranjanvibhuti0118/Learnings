@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirect Page</title>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+    <script th:inline="javascript">
+        /* Get the value associated with the key from the hashmap */
+        var key = /*[[${key}]]*/ '';
+        var value = /*[[${myHashMap[key]}]]*/ '';
+
+        /* Redirect to the value */
+        window.location.href = value;
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+spring.application.name=CreateOrder
+server.port=8081
+spring.datasource.url=jdbc:mysql://localhost/test
+spring.datasource.username=root
+spring.datasource.password=user
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Kafka producer configuration
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.ErrorHandlingSerializer
+spring.kafka.producer.properties.spring.serializer.value=org.springframework.kafka.support.serializer.ErrorHandlingSerializer
+
+# Optionally, you can define a serializer if you need to use a custom JSON serializer
+spring.kafka.producer.properties.value.serializer=org.springframework.kafka.core.GenericMessageListenerContainer.JsonSerializer

@@ -1,0 +1,12 @@
+package kafkaConiguration;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class KafkaListner {
+
+	@KafkaListener(topics = "test", groupId = "my-group-id")
+	public void listen(String message) {
+	    System.out.println("Received message: " + message);
+	}
+}

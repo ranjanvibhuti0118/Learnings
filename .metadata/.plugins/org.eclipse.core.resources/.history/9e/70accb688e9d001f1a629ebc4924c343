@@ -1,0 +1,68 @@
+package com.app.springbatch.configuration;
+
+import java.util.Optional;
+
+import org.springframework.batch.item.ItemProcessor;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.springbatch.entity.Inventory;
+import com.app.springbatch.entity.Product;
+import com.app.springbatch.repository.InventoryRepo;
+import com.app.springbatch.repository.ProductRepo;
+
+public class InventoryProcessor implements ItemProcessor<Inventory, Inventory> {
+
+	@Autowired
+	private ProductRepo productRepo;
+
+	@Autowired
+	private InventoryRepo inventoryRepo;
+
+	@Override
+	public Inventory process(Inventory item) throws Exception {
+
+		Long lInvId= item.getInventroyId();
+		Optional<Inventory> inv= inventoryRepo.findById(lInvId);
+		Product invFeedproduct= item.getProduct();
+		Long lProductId= invFeedproduct.getProductId();
+
+		int qty= item.getQty();
+
+		if(lInvId!=null && inv.isPresent()) {
+			updateStockForItem(inv.get(),qty);
+		}else {
+			Product product=null;
+			if(lProductId!=null) {
+				Optional<Product> isProductPresent = productRepo.findById(lProductId);
+				if(isProductPresent.isPresent()) {
+					product=isProductPresent.get();
+				}
+			}else {
+				//create new product
+			}
+			
+			Product newProduct=null;
+			if(!product.isPresent()) {
+				newProduct= new Product();
+				newProduct.setDescription(item.getProduct().getDescription());
+				newProduct.setProductName(item.getProduct().getProductName());
+			}else {
+				newProduct=product.get();
+			}
+			Inventory newInv= new Inventory();
+			newInv.setProduct(newProduct);	
+		}
+		
+		
+
+		return item;
+	}
+
+	private void updateStockForItem(Inventory inventory, int qty) {
+
+		inventory.setQty(qty);
+		inventoryRepo.save(inventory);
+
+	}
+
+}

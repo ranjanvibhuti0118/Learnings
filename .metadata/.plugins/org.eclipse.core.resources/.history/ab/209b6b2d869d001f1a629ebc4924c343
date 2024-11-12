@@ -1,0 +1,39 @@
+package com.app.springbatch.configuration;
+
+import org.springframework.batch.item.file.mapping.FieldSetMapper;
+import org.springframework.batch.item.file.transform.FieldSet;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.springbatch.entity.Inventory;
+import com.app.springbatch.entity.Product;
+import com.app.springbatch.repository.ProductRepo;
+
+public class InventoryFieldSetMapper implements FieldSetMapper<Inventory> {
+
+	@Autowired
+	private ProductRepo productRepo;
+	
+    @Override
+    public Inventory mapFieldSet(FieldSet fieldSet) {
+        Long lProdId=fieldSet.readLong("productId");
+        Long lInvId= fieldSet.readLong("inventroyId");
+    	
+        // Create a new Product object
+        Product product = new Product();
+        if(lProdId!=null) {
+            product.setProductId(lProdId);
+        }
+        product.setProductName(fieldSet.readString("productName"));
+        product.setDescription(fieldSet.readString("description"));
+
+        // Create a new Inventory object
+        Inventory inventory = new Inventory();
+        if(lInvId!=null) {
+        	inventory.setInventroyId(lInvId);
+        }
+        inventory.setProduct(product);  // Set the product object in Inventory
+        inventory.setQty(fieldSet.readInt("qty"));
+
+        return inventory;
+    }
+}

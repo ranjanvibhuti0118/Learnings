@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;UserDto.java&apos; to &apos;WebClient/src/main/java/com.app.blogger&apos;&#x0D;&#x0A;- Original project: &apos;RestTemplate&apos;&#x0D;&#x0A;- Destination element: &apos;WebClient/src/main/java/com.app.blogger&apos;&#x0D;&#x0A;- Original element: &apos;com.app.blogger.UserDto.java&apos;" description="Copy compilation unit" destination="=WebClient/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.app.blogger" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.app.blogger{UserDto.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1728204625946" units="1" version="1.0"/>
+</session>

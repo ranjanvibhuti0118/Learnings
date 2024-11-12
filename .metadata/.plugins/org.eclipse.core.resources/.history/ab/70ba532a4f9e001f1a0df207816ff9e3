@@ -1,0 +1,68 @@
+package com.app.order.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.order.entity.Address;
+import com.app.order.entity.Customer;
+import com.app.order.entity.Order;
+import com.app.order.entity.Product;
+import com.app.order.kafkaservice.KafkaProducerService;
+import com.app.order.service.AddressService;
+import com.app.order.service.CustomerService;
+import com.app.order.service.OrderService;
+import com.app.order.service.ProductService;
+
+@RestController
+@RequestMapping("/api/order/v1")
+public class OrderController {
+
+	@Autowired
+	private OrderService orderService;
+
+	@Autowired
+	private CustomerService custService;
+	
+	@Autowired
+	private AddressService addrService;
+	
+	@Autowired
+	private ProductService productService;
+
+	private KafkaProducerService kafkaService;
+	@PostMapping("/createOrder")
+	public ResponseEntity<Order> createOrder(@RequestBody Order order){
+
+		
+		Customer customer= order.getCustomer();
+		Address address= customer.getAddresses();
+		List<Product> cartItems= order.getProducts();
+		
+		
+		List<Product> savedProducts = productService.createProducts(cartItems);
+		Address savedAddress= addrService.getAddress(address);
+		Customer savedCustomer= custService.createCustomer(customer,savedAddress);
+		
+		order.setCustomer(savedCustomer);
+		order.setProducts(savedProducts);
+		
+		System.out.println("Order" + order);
+		
+		
+		Order savedOrder= orderService.createOrder(order);
+		
+
+		return new ResponseEntity<Order>(savedOrder,HttpStatus.CREATED);
+		
+	}
+	
+	
+
+}

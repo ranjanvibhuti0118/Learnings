@@ -1,0 +1,9 @@
+package com.app.order.service;
+
+import com.app.order.entity.Product;
+
+public interface ProductService {
+
+	Product createProducts(List<Products> cartItems);
+
+}

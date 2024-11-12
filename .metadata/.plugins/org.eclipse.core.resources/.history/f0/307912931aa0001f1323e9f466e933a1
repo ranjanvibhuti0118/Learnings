@@ -1,0 +1,16 @@
+package com.app.springbatch.service;
+
+import com.app.springbatch.entity.Inventory;
+import com.app.springbatch.repository.InventoryRepo;
+
+public class InventoryServiceImpl implements InventoryService{
+
+	private InventoryRepo invRepo;
+	@Override
+	public Inventory findInventory(String productId, String qty) {
+
+		
+		return null;
+	}
+
+}
