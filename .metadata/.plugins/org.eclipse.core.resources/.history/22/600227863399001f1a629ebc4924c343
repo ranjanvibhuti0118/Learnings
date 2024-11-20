@@ -1,8 +1,0 @@
-package com.app.order.service;
-
-import com.app.order.entity.SalesOrder;
-
-public interface OrderService {
-
-	public SalesOrder createOrder(SalesOrder order);
-}

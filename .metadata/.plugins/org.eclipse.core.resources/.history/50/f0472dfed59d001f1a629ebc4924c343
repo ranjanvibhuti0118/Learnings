@@ -1,5 +1,0 @@
-package com.app.blogger.service;
-
-public class KafkaProducerService {
-
-}

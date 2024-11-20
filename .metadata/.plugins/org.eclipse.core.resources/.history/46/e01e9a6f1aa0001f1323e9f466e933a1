@@ -1,6 +1,0 @@
-package com.app.springbatch.service;
-
-public interface InventoryService {
-
-	public Inventory findInventory(String productId, String qty);
-}

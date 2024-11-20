@@ -1,6 +1,0 @@
-package com.app.order.service;
-
-public interface AddressService {
-
-	public Address getAddress();
-}
